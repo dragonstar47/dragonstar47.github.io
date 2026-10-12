@@ -4,185 +4,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The personal portfolio and project archive of Jamal Malik.">
-  <title>jamal malik — personal website</title>
-
+  <meta name="theme-color" content="#ffffff">
+  <title>jamal malik — work & experiments</title>
+  <meta name="description" content="Film, music, and software by jamal malik.">
   <style>
+    :root {
+      --bg: #fff;
+      --fg: #171717;
+      --muted: #777;
+      --line: #e8e8e8;
+    }
+
     * { box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      background: #fff;
-      color: #222;
+      background: var(--bg);
+      color: var(--fg);
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 14px;
+      line-height: 1.65;
     }
 
     a { color: inherit; }
 
-    a:hover { color: #777; }
-
     .page {
-      width: min(1040px, 88%);
+      width: min(920px, calc(100% - 40px));
       margin: 0 auto;
     }
 
     header {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
-      padding: 25px 0 20px;
-      border-bottom: 1px solid #e8e8e8;
+      align-items: center;
+      gap: 20px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .brand {
-      font-size: 15px;
-      font-weight: bold;
+    .logo {
       text-decoration: none;
-      letter-spacing: -.4px;
+      font-size: 15px;
+      letter-spacing: -0.5px;
     }
 
-    nav { display: flex; gap: 19px; }
+    nav { display: flex; gap: 20px; }
 
     nav a {
+      color: var(--muted);
       font-size: 12px;
       text-decoration: none;
     }
 
-    .intro {
-      padding: 27px 0 24px;
-    }
+    nav a:hover, .project a:hover { color: #999; }
 
-    .intro p { margin: 0; }
-
-    .muted { color: #888; }
+    .intro { padding: 76px 0 48px; }
 
     .eyebrow {
-      margin-bottom: 5px !important;
-      font-size: 10px;
-      letter-spacing: 1px;
+      color: var(--muted);
       text-transform: uppercase;
-      color: #888;
+      letter-spacing: 1.5px;
+      font-size: 10px;
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 35px 22px;
+    h1 {
+      font-weight: 400;
+      letter-spacing: -2.5px;
+      line-height: 1.1;
+      font-size: clamp(38px, 7vw, 62px);
+      margin: 12px 0 18px;
     }
 
-    .project {
-      min-width: 0;
+    .intro p {
+      color: var(--muted);
+      max-width: 440px;
+      margin: 0;
     }
 
-    .image-link {
-      display: block;
-      overflow: hidden;
-      background: #f1f0ed;
-      aspect-ratio: 4 / 3;
-    }
-
-    .project img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: opacity .2s ease;
-    }
-
-    .image-link:hover img { opacity: .83; }
-
-    .caption {
+    .section-head {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       align-items: baseline;
-      padding-top: 9px;
-    }
-
-    .caption a {
-      text-decoration: none;
-      font-size: 12px;
-    }
-
-    .category {
-      font-size: 10px;
-      color: #888;
-      text-align: right;
-    }
-
-    .section {
-      margin-top: 65px;
-      padding-top: 18px;
-      border-top: 1px solid #e8e8e8;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+      margin-bottom: 22px;
     }
 
     h2 {
       font-size: 12px;
-      font-weight: normal;
-      margin: 0 0 13px;
+      font-weight: 500;
+      margin: 0;
     }
 
-    .about-copy {
-      max-width: 480px;
-      color: #666;
+    .section-head span {
+      font-size: 11px;
+      color: var(--muted);
     }
 
-    .links {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 36px 22px;
+    }
+
+    .project { min-width: 0; }
+
+    .thumb {
+      display: block;
+      overflow: hidden;
+      background: #f4f4f4;
+      aspect-ratio: 16 / 10;
+      margin-bottom: 13px;
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s ease;
+    }
+
+    .thumb:hover img { transform: scale(1.025); }
+
+    .placeholder {
+      height: 100%;
       display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 12px;
+      letter-spacing: 1px;
     }
 
-    .links a { font-size: 12px; }
+    .project h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0 0 3px;
+      letter-spacing: -0.2px;
+    }
+
+    .category {
+      font-size: 9px;
+      letter-spacing: 1.2px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .project p {
+      font-size: 12px;
+      color: #666;
+      margin: 9px 0;
+      max-width: 380px;
+    }
+
+    .project-link {
+      font-size: 11px;
+      text-underline-offset: 3px;
+    }
+
+    .about {
+      border-top: 1px solid var(--line);
+      margin-top: 76px;
+      padding: 30px 0 48px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+    }
+
+    .about p {
+      color: var(--muted);
+      margin: 0;
+      max-width: 460px;
+    }
 
     footer {
+      border-top: 1px solid var(--line);
+      padding: 20px 0 28px;
       display: flex;
       justify-content: space-between;
+      color: var(--muted);
+      font-size: 11px;
       gap: 15px;
-      margin-top: 70px;
-      padding: 17px 0 25px;
-      border-top: 1px solid #e8e8e8;
-      color: #999;
-      font-size: 10px;
     }
 
-    @media (max-width: 600px) {
-      .page { width: 90%; }
+    footer a { text-decoration: none; }
 
-      header { align-items: center; }
-
+    @media (max-width: 560px) {
+      .page { width: calc(100% - 30px); }
+      header { align-items: flex-start; }
       nav { gap: 12px; }
+      .intro { padding: 54px 0 38px; }
+      .grid { grid-template-columns: 1fr; gap: 30px; }
+      .about { grid-template-columns: 1fr; gap: 12px; margin-top: 54px; }
+      h1 { letter-spacing: -1.7px; }
+    }
 
-      nav a { font-size: 11px; }
-
-      .gallery { gap: 25px 12px; }
-
-      .caption {
-        display: block;
-      }
-
-      .category {
-        display: block;
-        text-align: left;
-        margin-top: 2px;
-      }
-
-      .section { margin-top: 45px; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
     }
   </style>
 </head>
-
 <body>
   <div class="page">
-
     <header>
-      <a class="brand" href="#">jamal malik</a>
-
-      <nav>
+      <a class="logo" href="#">jamal malik</a>
+      <nav aria-label="Main navigation">
         <a href="#work">work</a>
         <a href="#about">about</a>
         <a href="#links">links</a>
@@ -190,123 +220,139 @@
     </header>
 
     <main>
-      <div class="intro">
-        <p class="eyebrow">personal website / 2026</p>
-        <p>some things i've made, some things i'm making.</p>
-      </div>
-
-      <section id="work" class="gallery" aria-label="Selected projects">
-
-        <article class="project">
-          <a class="image-link" href="#video-work">
-            <img
-              src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1000&q=80"
-              alt="Camera equipment for a video production"
-              loading="eager">
-          </a>
-          <div class="caption">
-            <a href="#video-work">moving images</a>
-            <span class="category">video / editing</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="image-link" href="#audio-work">
-            <img
-              src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=80"
-              alt="Music recording and production studio"
-              loading="eager">
-          </a>
-          <div class="caption">
-            <a href="#audio-work">sound studies</a>
-            <span class="category">music / audio</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="image-link" href="#code-work">
-            <img
-              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
-              alt="Computer hardware and electronic components"
-              loading="lazy">
-          </a>
-          <div class="caption">
-            <a href="#code-work">things i've built</a>
-            <span class="category">code / AI</span>
-          </div>
-        </article>
-
-        <article class="project">
-          <a class="image-link" href="#other-work">
-            <img
-              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80"
-              alt="Notebook and writing materials on a desk"
-              loading="lazy">
-          </a>
-          <div class="caption">
-            <a href="#other-work">notes &amp; fragments</a>
-            <span class="category">miscellaneous</span>
-          </div>
-        </article>
-
-      </section>
-
-      <section id="video-work" class="section">
-        <h2>01 / moving images</h2>
-        <p class="about-copy">
-          Video projects, edits, and visual experiments.
-          <a href="#work">Selected work above.</a>
+      <section class="intro">
+        <div class="eyebrow">Personal archive / 2026</div>
+        <h1>Things I've<br>made &amp; worked on.</h1>
+        <p>
+          Film, sound, and software. A collection of projects,
+          experiments, and things built along the way.
         </p>
       </section>
 
-      <section id="audio-work" class="section">
-        <h2>02 / sound studies</h2>
-        <p class="about-copy">
-          Music i've been working on, sounds i've been exploring,
-          and unfinished ideas worth keeping.
-        </p>
-      </section>
-
-      <section id="code-work" class="section">
-        <h2>03 / things i've built</h2>
-        <p class="about-copy">
-          Independent projects in Python, AI, and software.
-        </p>
-      </section>
-
-      <section id="other-work" class="section">
-        <h2>04 / notes &amp; fragments</h2>
-        <p class="about-copy">
-          Other projects, experiments, and things from along the way.
-        </p>
-      </section>
-
-      <section id="about" class="section">
-        <h2>a little about me</h2>
-        <p class="about-copy">
-          I'm Jamal Malik. I work across media, music, and technology.
-          This is a place to collect the things I make, the things
-          I'm learning, and the ideas I don't want to lose.
-        </p>
-      </section>
-
-      <section id="links" class="section">
-        <h2>elsewhere on the internet</h2>
-        <div class="links">
-          <a href="https://github.com/" target="_blank"
-             rel="noopener noreferrer">github ↗</a>
-          <a href="https://soundcloud.com/" target="_blank"
-             rel="noopener noreferrer">soundcloud ↗</a>
-          <a href="mailto:YOUR_EMAIL@example.com">email ↗</a>
+      <section id="work">
+        <div class="section-head">
+          <h2>Selected work</h2>
+          <span>01 — 05</span>
         </div>
+
+        <div class="grid">
+          <article class="project">
+            <a class="thumb"
+               href="https://www.youtube.com/watch?v=YcTfRXG0kVM"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Watch Demo Kitchen Marketing Video">
+              <img
+                src="https://img.youtube.com/vi/YcTfRXG0kVM/hqdefault.jpg"
+                alt="Demo Kitchen Marketing Video thumbnail"
+                loading="lazy">
+            </a>
+            <div class="category">Video / Direction / Editing</div>
+            <h3>Demo Kitchen Marketing Video</h3>
+            <p>
+              Directed and edited a video showcasing the university's
+              demonstration kitchen and its role in university exposure.
+            </p>
+            <a class="project-link"
+               href="https://www.youtube.com/watch?v=YcTfRXG0kVM"
+               target="_blank" rel="noopener noreferrer">Watch film ↗</a>
+          </article>
+
+          <article class="project">
+            <a class="thumb"
+               href="https://www.youtube.com/watch?v=sxBkCnBKGtM"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Watch Blood Sisters">
+              <img
+                src="https://img.youtube.com/vi/sxBkCnBKGtM/hqdefault.jpg"
+                alt="Blood Sisters short film thumbnail"
+                loading="lazy">
+            </a>
+            <div class="category">Film / Short Film</div>
+            <h3>Blood Sisters</h3>
+            <p>
+              A short film project. Part of my work and experience
+              in film production.
+            </p>
+            <a class="project-link"
+               href="https://www.youtube.com/watch?v=sxBkCnBKGtM"
+               target="_blank" rel="noopener noreferrer">Watch film ↗</a>
+          </article>
+
+          <article class="project">
+            <a class="thumb"
+               href="https://www.youtube.com/watch?v=J9Htv_FCVkU"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Listen to Weekend Remix">
+              <img
+                src="https://img.youtube.com/vi/J9Htv_FCVkU/hqdefault.jpg"
+                alt="Weekend Remix music thumbnail"
+                loading="lazy">
+            </a>
+            <div class="category">Music / Production</div>
+            <h3>Weekend Remix</h3>
+            <p>
+              A music project exploring rhythm, sound, and production.
+            </p>
+            <a class="project-link"
+               href="https://www.youtube.com/watch?v=J9Htv_FCVkU"
+               target="_blank" rel="noopener noreferrer">Listen / watch ↗</a>
+          </article>
+
+          <article class="project">
+            <a class="thumb"
+               href="https://icarus-production-8000.up.railway.app/"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Open Icarus trading agent">
+              <div class="placeholder">ICARUS / AI SYSTEMS</div>
+            </a>
+            <div class="category">Code / AI / Finance</div>
+            <h3>Icarus</h3>
+            <p>
+              An options-trading agent built for a hackathon,
+              exploring automated analysis and trading workflows.
+            </p>
+            <a class="project-link"
+               href="https://icarus-production-8000.up.railway.app/"
+               target="_blank" rel="noopener noreferrer">Open project ↗</a>
+          </article>
+
+          <article class="project">
+            <a class="thumb"
+               href="https://trading-bot-production-01fd.up.railway.app/"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Open trading bot">
+              <div class="placeholder">TRADING BOT / AUTOMATION</div>
+            </a>
+            <div class="category">Code / Automation</div>
+            <h3>Trading Bot</h3>
+            <p>
+              A separate trading-bot project focused on automated
+              market workflows.
+            </p>
+            <a class="project-link"
+               href="https://trading-bot-production-01fd.up.railway.app/"
+               target="_blank" rel="noopener noreferrer">Open project ↗</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <h2>A little about me</h2>
+        <p>
+          I'm Jamal Malik. I work across film, music, and code,
+          moving between creative projects and technical experiments.
+          This site is a growing archive of the work.
+        </p>
       </section>
     </main>
 
-    <footer>
-      <span>jamal malik / personal archive</span>
-      <span>made on the internet · 2026</span>
+    <footer id="links">
+      <span>jamal malik © 2026</span>
+      <span>
+        <a href="https://github.com/" target="_blank"
+           rel="noopener noreferrer">github</a>
+      </span>
     </footer>
-
   </div>
 </body>
 </html>
