@@ -3,146 +3,310 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative portfolio showcasing media, storytelling, music, and technology.">
-  <title>Your Name — Creative Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The personal portfolio and project archive of Jamal Malik.">
+  <title>jamal malik — personal website</title>
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
-      background: #101010;
-      color: #f5f5f5;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      background: #fff;
+      color: #222;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 13px;
       line-height: 1.6;
     }
-    a { color: inherit; text-decoration: none; }
-    nav {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 24px 8%; border-bottom: 1px solid #292929;
+
+    a { color: inherit; }
+
+    a:hover { color: #777; }
+
+    .page {
+      width: min(1040px, 88%);
+      margin: 0 auto;
     }
-    .logo { font-weight: 800; letter-spacing: 2px; }
-    .nav-links { display: flex; gap: 24px; font-size: 13px; color: #bbb; }
-    .hero { padding: 120px 8% 100px; max-width: 1100px; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 25px 0 20px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .brand {
+      font-size: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      letter-spacing: -.4px;
+    }
+
+    nav { display: flex; gap: 19px; }
+
+    nav a {
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .intro {
+      padding: 27px 0 24px;
+    }
+
+    .intro p { margin: 0; }
+
+    .muted { color: #888; }
+
     .eyebrow {
-      color: #a7a7a7; font-size: 12px; letter-spacing: 3px;
-      text-transform: uppercase; margin-bottom: 24px;
+      margin-bottom: 5px !important;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #888;
     }
-    h1 {
-      font-size: clamp(46px, 8vw, 94px);
-      line-height: 1.03; letter-spacing: -4px; max-width: 900px;
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 35px 22px;
     }
-    .hero p { color: #aaa; max-width: 530px; margin-top: 26px; font-size: 17px; }
-    .cta {
-      display: inline-block; margin-top: 32px; padding: 13px 20px;
-      border: 1px solid #777; border-radius: 3px; font-size: 13px;
-    }
-    section { padding: 70px 8%; }
-    .section-heading {
-      font-size: 28px; margin-bottom: 12px; letter-spacing: -1px;
-    }
-    .section-intro { color: #999; margin-bottom: 32px; }
-    .projects {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px;
-    }
+
     .project {
-      background: #191919; border: 1px solid #2b2b2b;
-      padding: 30px; min-height: 190px;
+      min-width: 0;
     }
-    .project .number { color: #777; font-size: 12px; }
-    .project h3 { font-size: 23px; margin: 20px 0 8px; }
-    .project p, .about p { color: #aaa; font-size: 14px; }
-    .about { max-width: 760px; }
-    .about p { font-size: 17px; margin-top: 18px; }
-    .contact { background: #181818; }
-    .contact a { text-decoration: underline; text-underline-offset: 5px; }
+
+    .image-link {
+      display: block;
+      overflow: hidden;
+      background: #f1f0ed;
+      aspect-ratio: 4 / 3;
+    }
+
+    .project img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity .2s ease;
+    }
+
+    .image-link:hover img { opacity: .83; }
+
+    .caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      padding-top: 9px;
+    }
+
+    .caption a {
+      text-decoration: none;
+      font-size: 12px;
+    }
+
+    .category {
+      font-size: 10px;
+      color: #888;
+      text-align: right;
+    }
+
+    .section {
+      margin-top: 65px;
+      padding-top: 18px;
+      border-top: 1px solid #e8e8e8;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: normal;
+      margin: 0 0 13px;
+    }
+
+    .about-copy {
+      max-width: 480px;
+      color: #666;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .links a { font-size: 12px; }
+
     footer {
-      padding: 25px 8%; border-top: 1px solid #292929;
-      color: #777; font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 70px;
+      padding: 17px 0 25px;
+      border-top: 1px solid #e8e8e8;
+      color: #999;
+      font-size: 10px;
     }
+
     @media (max-width: 600px) {
-      nav { padding: 20px 6%; }
-      .nav-links { gap: 12px; font-size: 11px; }
-      .hero { padding: 90px 6% 70px; }
-      h1 { letter-spacing: -2px; }
-      section { padding: 55px 6%; }
-      .projects { grid-template-columns: 1fr; }
-      .project { min-height: 160px; }
+      .page { width: 90%; }
+
+      header { align-items: center; }
+
+      nav { gap: 12px; }
+
+      nav a { font-size: 11px; }
+
+      .gallery { gap: 25px 12px; }
+
+      .caption {
+        display: block;
+      }
+
+      .category {
+        display: block;
+        text-align: left;
+        margin-top: 2px;
+      }
+
+      .section { margin-top: 45px; }
     }
   </style>
 </head>
-<body>
-  <nav>
-    <a class="logo" href="#">YOUR NAME.</a>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
 
-  <main>
-    <header class="hero">
-      <div class="eyebrow">Creative Portfolio · 2026</div>
-      <h1>Ideas worth hearing. Stories worth seeing.</h1>
-      <p>
-        I bring ideas to life through storytelling, media, sound,
-        and technology. Explore my work and the ideas behind it.
-      </p>
-      <a class="cta" href="#work">EXPLORE MY WORK ↘</a>
+<body>
+  <div class="page">
+
+    <header>
+      <a class="brand" href="#">jamal malik</a>
+
+      <nav>
+        <a href="#work">work</a>
+        <a href="#about">about</a>
+        <a href="#links">links</a>
+      </nav>
     </header>
 
-    <section id="work">
-      <h2 class="section-heading">Selected Work</h2>
-      <p class="section-intro">A collection of projects, experiments, and ideas.</p>
-      <div class="projects">
-        <article class="project">
-          <span class="number">01 / MEDIA</span>
-          <h3>Film & Video</h3>
-          <p>Visual storytelling, video editing, and creative production.</p>
-        </article>
-        <article class="project">
-          <span class="number">02 / SOUND</span>
-          <h3>Music & Audio</h3>
-          <p>Music production, sound design, and sonic exploration.</p>
-        </article>
-        <article class="project">
-          <span class="number">03 / TECHNOLOGY</span>
-          <h3>AI & Development</h3>
-          <p>Python projects, AI agents, and independent experiments.</p>
-        </article>
-        <article class="project">
-          <span class="number">04 / IDEAS</span>
-          <h3>Creative Concepts</h3>
-          <p>Ideas, concepts, and projects built around curiosity.</p>
-        </article>
+    <main>
+      <div class="intro">
+        <p class="eyebrow">personal website / 2026</p>
+        <p>some things i've made, some things i'm making.</p>
       </div>
-    </section>
 
-    <section id="about">
-      <div class="about">
-        <h2 class="section-heading">A little about me.</h2>
-        <p>
-          I'm a creative professional interested in the intersection
-          of media, culture, storytelling, music, and technology.
-          I care about ideas that connect with people and work that
-          makes an impact.
+      <section id="work" class="gallery" aria-label="Selected projects">
+
+        <article class="project">
+          <a class="image-link" href="#video-work">
+            <img
+              src="https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1000&q=80"
+              alt="Camera equipment for a video production"
+              loading="eager">
+          </a>
+          <div class="caption">
+            <a href="#video-work">moving images</a>
+            <span class="category">video / editing</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="image-link" href="#audio-work">
+            <img
+              src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1000&q=80"
+              alt="Music recording and production studio"
+              loading="eager">
+          </a>
+          <div class="caption">
+            <a href="#audio-work">sound studies</a>
+            <span class="category">music / audio</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="image-link" href="#code-work">
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80"
+              alt="Computer hardware and electronic components"
+              loading="lazy">
+          </a>
+          <div class="caption">
+            <a href="#code-work">things i've built</a>
+            <span class="category">code / AI</span>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="image-link" href="#other-work">
+            <img
+              src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1000&q=80"
+              alt="Notebook and writing materials on a desk"
+              loading="lazy">
+          </a>
+          <div class="caption">
+            <a href="#other-work">notes &amp; fragments</a>
+            <span class="category">miscellaneous</span>
+          </div>
+        </article>
+
+      </section>
+
+      <section id="video-work" class="section">
+        <h2>01 / moving images</h2>
+        <p class="about-copy">
+          Video projects, edits, and visual experiments.
+          <a href="#work">Selected work above.</a>
         </p>
-        <p>
-          This portfolio is a growing collection of what I create,
-          what I build, and what I'm learning along the way.
+      </section>
+
+      <section id="audio-work" class="section">
+        <h2>02 / sound studies</h2>
+        <p class="about-copy">
+          Music i've been working on, sounds i've been exploring,
+          and unfinished ideas worth keeping.
         </p>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="contact">
-      <h2 class="section-heading">Let's connect.</h2>
-      <p class="section-intro">
-        Have a project, an opportunity, or an idea worth exploring?
-      </p>
-      <p>Reach me at: <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></p>
-    </section>
-  </main>
+      <section id="code-work" class="section">
+        <h2>03 / things i've built</h2>
+        <p class="about-copy">
+          Independent projects in Python, AI, and software.
+        </p>
+      </section>
 
-  <footer>© 2026 YOUR NAME. Built with intention.</footer>
+      <section id="other-work" class="section">
+        <h2>04 / notes &amp; fragments</h2>
+        <p class="about-copy">
+          Other projects, experiments, and things from along the way.
+        </p>
+      </section>
+
+      <section id="about" class="section">
+        <h2>a little about me</h2>
+        <p class="about-copy">
+          I'm Jamal Malik. I work across media, music, and technology.
+          This is a place to collect the things I make, the things
+          I'm learning, and the ideas I don't want to lose.
+        </p>
+      </section>
+
+      <section id="links" class="section">
+        <h2>elsewhere on the internet</h2>
+        <div class="links">
+          <a href="https://github.com/" target="_blank"
+             rel="noopener noreferrer">github ↗</a>
+          <a href="https://soundcloud.com/" target="_blank"
+             rel="noopener noreferrer">soundcloud ↗</a>
+          <a href="mailto:YOUR_EMAIL@example.com">email ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>jamal malik / personal archive</span>
+      <span>made on the internet · 2026</span>
+    </footer>
+
+  </div>
 </body>
 </html>
